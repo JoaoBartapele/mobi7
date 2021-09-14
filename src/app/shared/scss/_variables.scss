@@ -1,0 +1,28 @@
+@import "~@angular/material/theming";
+
+$black08: rgba(0, 0, 0, 0.08);
+$black12: rgba(0, 0, 0, 0.12);
+$black26: rgba(0, 0, 0, 0.26);
+$black38: rgba(0, 0, 0, 0.38);
+$black54: rgba(0, 0, 0, 0.54);
+$black60: rgba(0, 0, 0, 0.6);
+$black87: rgba(0, 0, 0, 0.87);
+
+$accent-palette: (
+  50: #e1f2f1,
+  100: #b3e0dc,
+  200: #83cdc6,
+  300: #52b8ae,
+  400: #2ea99d,
+  500: #14998b,
+  600: #128c7e,
+  700: #0f7c6e,
+  800: #0d6c5f,
+  900: #095043,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: white,
+  ),
+);
