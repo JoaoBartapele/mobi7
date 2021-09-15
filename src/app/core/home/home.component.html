@@ -1,1 +1,16 @@
-home works
+<div class="flex column">
+  <div class="head flex column">
+    <mat-form-field appearance="outline">
+      <mat-label>Buscar ponto de interesse</mat-label>
+      <input matInput />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="$event.stopPropagation()"
+      >
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div class="content"></div>
+</div>
