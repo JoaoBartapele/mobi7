@@ -1,3 +1,39 @@
-<mat-toolbar color="primary">
-  <span>Teste Mobi7 xD</span>
-</mat-toolbar>
+<div class="main-container">
+  <mat-toolbar>
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon [@rotateOnClick]="!!!sidenav.opened"> close </mat-icon>
+      <mat-icon [@rotateOnClick]="!!sidenav.opened"> menu </mat-icon>
+      <!-- <mat-icon>{{ sidenav.opened ? "close" : "menu" }}</mat-icon> -->
+    </button>
+  </mat-toolbar>
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav mode="over">
+      <mat-action-list>
+        <a
+          mat-list-item
+          [routerLink]="['/home']"
+          routerLinkActive="router-link-active"
+        >
+          Home
+        </a>
+        <a
+          mat-list-item
+          [routerLink]="['/boards']"
+          routerLinkActive="router-link-active"
+        >
+          Placas
+        </a>
+        <a
+          mat-list-item
+          [routerLink]="['/pois']"
+          routerLinkActive="router-link-active"
+        >
+          POIs
+        </a>
+      </mat-action-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="p-20">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

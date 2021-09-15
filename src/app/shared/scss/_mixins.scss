@@ -1,0 +1,32 @@
+@mixin spacementHelpers {
+  $maxSpacement: 64;
+  $sides: (top, bottom, left, right);
+  $types: (margin, padding);
+  $axes: (x, y);
+
+  @for $space from 0 through $maxSpacement {
+    @each $type in $types {
+      .#{str-slice($type, 0, 1)}-#{$space} {
+        #{$type}: #{$space}px !important;
+      }
+      @each $side in $sides {
+        .#{str-slice($type, 0, 1)}#{str-slice($side, 0, 1)}-#{$space} {
+          #{$type}-#{$side}: #{$space}px !important;
+        }
+      }
+      @each $axis in $axes {
+        @if $axis == x {
+          .#{str-slice($type, 0, 1)}#{$axis}-#{$space} {
+            #{$type}-right: #{$space}px !important;
+            #{$type}-left: #{$space}px !important;
+          }
+        } @else {
+          .#{str-slice($type, 0, 1)}#{$axis}-#{$space} {
+            #{$type}-top: #{$space}px !important;
+            #{$type}-bottom: #{$space}px !important;
+          }
+        }
+      }
+    }
+  }
+}
