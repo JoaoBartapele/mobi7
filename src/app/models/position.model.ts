@@ -1,4 +1,4 @@
-export interface Position {
+export interface PositionDetails {
   placa: string;
   data: string;
   velocidade: number;
