@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  api_url: 'https://challenge-backend.mobi7.io'
+  api_url: 'https://challenge-backend.mobi7.io',
+  maps_key: 'AIzaSyA-y7NPlgV9Y_2a6vQ_NUhPQXCEC20sAGw'
 };
 
 /*

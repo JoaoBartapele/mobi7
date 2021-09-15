@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { GoogleMapsModule } from '@angular/google-maps';
 import { MaterialModule } from './material.module';
 
 @NgModule({
@@ -12,6 +13,8 @@ import { MaterialModule } from './material.module';
     HttpClientModule,
     ReactiveFormsModule,
     CommonModule,
+    GoogleMapsModule,
+    HttpClientJsonpModule,
   ],
 })
 export class SharedModule {}

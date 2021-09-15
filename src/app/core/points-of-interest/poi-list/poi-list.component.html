@@ -1,10 +1,19 @@
 <mat-accordion>
   <mat-expansion-panel
     *ngFor="let point of list"
-    (afterExpand)="getData(point)"
+    (afterExpand)="loadData(point)"
+    (afterCollapse)="resetData()"
   >
     <mat-expansion-panel-header>
       <mat-panel-title> {{ point.nome }} </mat-panel-title>
     </mat-expansion-panel-header>
+    <ng-template matExpansionPanelContent>
+      <div *ngIf="apiLoaded">
+        <google-map [options]="mapOptions">
+          <map-circle [center]="circleCenter"
+              [radius]="radius"></map-circle>
+        </google-map>
+      </div>
+    </ng-template>
   </mat-expansion-panel>
 </mat-accordion>
