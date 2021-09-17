@@ -14,6 +14,11 @@ export class PointsOfInterestService {
 
   public getAllPOI(): Observable<POI[]> {
     const url = this._url_api + '/pois';
-    return this._http.get<[]>(url);
+    return this._http.get<POI[]>(url);
+  }
+
+  public getAllVehicles(): Observable<string[]> {
+    const url = this._url_api + '/posicao/placas';
+    return this._http.get<string[]>(url);
   }
 }

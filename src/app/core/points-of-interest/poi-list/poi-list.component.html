@@ -2,7 +2,6 @@
   <mat-expansion-panel
     *ngFor="let point of list"
     (afterExpand)="loadData(point)"
-    (afterCollapse)="resetData()"
   >
     <mat-expansion-panel-header>
       <mat-panel-title> {{ point.nome }} </mat-panel-title>
@@ -12,13 +11,44 @@
         <google-map [options]="mapOptions">
           <map-circle [center]="circleCenter" [radius]="radius"></map-circle>
         </google-map>
-        <div class="flex column mx-24 gap-4">
-          <h2>{{ point.id }} - {{ point.nome }}</h2>
-          <span><b>Lat:</b> {{ point.latitude }} </span>
-          <span><b>Long:</b> {{ point.longitude }}</span>
-          <span><b>Raio:</b> {{ point.raio + " m" }}</span>
+        <div class="flex column mx-24 gap-16">
+          <div class="flex column gap-8">
+            <h2>{{ point.id }} - {{ point.nome }}</h2>
+            <span><b>Lat:</b> {{ point.latitude }} </span>
+            <span><b>Long:</b> {{ point.longitude }}</span>
+            <span><b>Raio:</b> {{ point.raio + " m" }}</span>
+            <a
+              mat-raised-button
+              color="accent"
+              [href]="
+                'https://www.google.com/maps?q=' +
+                point.latitude +
+                ',' +
+                point.longitude
+              "
+              target="_blank"
+            >
+              Ver no maps
+              <mat-icon matPrefix>map</mat-icon>
+            </a>
+          </div>
+          <div>
+            <ng-container
+              *ngTemplateOutlet="!!!vehicleInPosition ? loadingTemplate : null"
+            ></ng-container>
+
+            <mat-list *ngIf="!!vehicleInPosition">
+              <mat-list-item *ngFor="let vehicle of vehicleList">
+                {{ vehicle }}
+              </mat-list-item>
+            </mat-list>
+          </div>
         </div>
       </div>
     </ng-template>
   </mat-expansion-panel>
 </mat-accordion>
+
+<ng-template #loadingTemplate>
+  <mat-spinner color="accent"></mat-spinner>
+</ng-template>

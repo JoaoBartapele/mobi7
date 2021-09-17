@@ -4,7 +4,7 @@ import { POI } from '@models/poi.model';
 
 import { map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { environment } from '../../../../environments/environment';
+import { environment } from '@env/environment';
 
 @Component({
   selector: 'm7-poi-list',
@@ -13,11 +13,13 @@ import { environment } from '../../../../environments/environment';
 })
 export class PoiListComponent implements OnInit {
   @Input() list: POI[] | null = [];
+  @Input() vehicleList: string[] | null = [];
 
   public apiLoaded: any;
   public mapOptions: google.maps.MapOptions = {};
   public circleCenter: google.maps.LatLngLiteral = { lat: 10, lng: 15 };
   public radius = 0;
+  public vehicleInPosition: any;
 
   constructor(private httpClient: HttpClient) {}
 
@@ -34,12 +36,12 @@ export class PoiListComponent implements OnInit {
       .toPromise();
   }
 
-  public loadData(point: POI) {
+  private _setMapConfigs(point: POI): void {
     this.mapOptions = {
       center: {
         lat: point.latitude,
         lng: point.longitude,
-      }
+      },
     };
     this.circleCenter = {
       lat: point.latitude,
@@ -47,7 +49,9 @@ export class PoiListComponent implements OnInit {
     };
     this.radius = point.raio;
   }
-  public resetData() {
-    this.mapOptions = {};
+
+  public loadData(point: POI) {
+    this._setMapConfigs(point);
   }
+
 }
