@@ -8,11 +8,16 @@
       <mat-panel-title> {{ point.nome }} </mat-panel-title>
     </mat-expansion-panel-header>
     <ng-template matExpansionPanelContent>
-      <div *ngIf="apiLoaded">
+      <div class="flex row p-16" *ngIf="apiLoaded">
         <google-map [options]="mapOptions">
-          <map-circle [center]="circleCenter"
-              [radius]="radius"></map-circle>
+          <map-circle [center]="circleCenter" [radius]="radius"></map-circle>
         </google-map>
+        <div class="flex column mx-24 gap-4">
+          <h2>{{ point.id }} - {{ point.nome }}</h2>
+          <span><b>Lat:</b> {{ point.latitude }} </span>
+          <span><b>Long:</b> {{ point.longitude }}</span>
+          <span><b>Raio:</b> {{ point.raio + " m" }}</span>
+        </div>
       </div>
     </ng-template>
   </mat-expansion-panel>

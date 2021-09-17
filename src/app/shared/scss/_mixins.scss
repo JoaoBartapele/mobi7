@@ -30,3 +30,16 @@
     }
   }
 }
+
+@mixin layoutGapHelper {
+  $maxSpacement: 64;
+
+  @for $space from 0 through $maxSpacement {
+    .column.gap-#{$space} > *:not(:last-child) {
+      margin-bottom: #{$space}px;
+    }
+    .row.gap-#{$space} > *:not(:last-child) {
+      margin-right: #{$space}px;
+    }
+  }
+}

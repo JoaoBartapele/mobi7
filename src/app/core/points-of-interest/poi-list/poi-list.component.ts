@@ -14,10 +14,10 @@ import { environment } from '../../../../environments/environment';
 export class PoiListComponent implements OnInit {
   @Input() list: POI[] | null = [];
 
-  apiLoaded: any;
-  mapOptions: google.maps.MapOptions = {};
-  circleCenter: google.maps.LatLngLiteral = { lat: 10, lng: 15 };
-  radius = 3;
+  public apiLoaded: any;
+  public mapOptions: google.maps.MapOptions = {};
+  public circleCenter: google.maps.LatLngLiteral = { lat: 10, lng: 15 };
+  public radius = 0;
 
   constructor(private httpClient: HttpClient) {}
 
